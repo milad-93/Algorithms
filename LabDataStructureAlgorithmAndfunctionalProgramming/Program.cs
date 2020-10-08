@@ -25,8 +25,8 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
 
             }
 
-           
 
+            Console.WriteLine("crille");
 
 
         }
