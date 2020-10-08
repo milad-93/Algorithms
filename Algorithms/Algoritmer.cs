@@ -69,14 +69,32 @@ namespace Algorithms
             }
         }
 
-        public static void InsertionSort(int[] array)
+        public static void InsertionSort(int[] array) // takes an array as input
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
-
+                int j;
+                var insertionValue = array[i];
+                for (j = i; j > 0; j--)
+                {
+                    if (array[j - 1] > insertionValue)
+                    {
+                        array[j] = array[j - 1];
+                    }
+                }
+                array[j] = insertionValue;
             }
 
         }
+
+        public static void MergeSort(int[] array)
+        {
+
+        }
+
+
+
+
 
         #endregion
 
