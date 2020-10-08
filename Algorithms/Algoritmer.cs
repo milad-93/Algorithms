@@ -89,7 +89,7 @@ namespace Algorithms
 
         public static void MergeSort(int[] array)
         {
-
+            Console.WriteLine("hello"); 
         }
 
 
