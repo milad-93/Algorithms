@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 
 namespace Algorithms
 {
@@ -36,7 +37,7 @@ namespace Algorithms
 
         #region searching algos
 
-        public static void BubbleSort(int[] array)  // bubble sort takes an array as input calls swap func
+        public static void BubbleSort(int[] array)  // bubble sort takes an array as input calls swap func  0(n2)
         {
 
             for (int i = 0; i < array.Length; i++)
@@ -162,7 +163,12 @@ namespace Algorithms
         }
         #endregion Algorithms
 
+        #region Delegates
+        public delegate int selecter(int[] array);
+        public delegate void pointer(int[] array);
+        public delegate void multiPointer(int[] array, int left, int right);
 
+        #endregion Delegates
 
 
 

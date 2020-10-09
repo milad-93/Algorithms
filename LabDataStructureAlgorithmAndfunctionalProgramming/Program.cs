@@ -28,7 +28,7 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             Algoritmer.Swap(numberArray, x, y);
 
 
-
+            
 
 
 
