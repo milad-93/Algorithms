@@ -168,6 +168,13 @@ namespace Algorithms
         public delegate void pointer(int[] array);
         public delegate void multiPointer(int[] array, int left, int right);
 
+
+        //Example
+        //   public delegate void myDelegate(object source, EventArgs args);
+        // public event myDelegate delegated;
+        // https://www.youtube.com/watch?v=jQgwEsJISy0&t=1194s
+
+
         #endregion Delegates
 
 
