@@ -197,9 +197,10 @@ namespace Algorithms
             Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
             Console.WriteLine("Elapsed Time is {0:00}:{1:00}:{2:00}.{3}",
                 tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
+
         }
 
-
+        //blablablablabalbal
         //Example
         //   public delegate void myDelegate(object source, EventArgs args);
         // public event myDelegate delegated;
