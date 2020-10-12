@@ -13,32 +13,30 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
     class Program
     {
         static void Main(string[] args)
-        {
-                // object of my DLL   
-            Algoritmer Algoritmer = new Algoritmer();    
-            // MENU FROM dll       
-          
-            int x, y;
-            int[] numberArray = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
-            Console.WriteLine("To swap Position of array enter 2 numbers");
-            Console.WriteLine("Position 1");
-            x = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Position 2");
-            y = Convert.ToInt32(Console.ReadLine());
-            Algoritmer.Swap(numberArray, x, y);
-
-
+        {            
+            int arraySize;
+            int[] array;
             
+            Console.WriteLine("Mata in en array Storlek");
+            arraySize = Convert.ToInt32(Console.ReadLine());
+            array  = Algoritmer.Prepare(arraySize);
+
+
+
+            Algoritmer.Pointer del = Algoritmer.InsertionSort;
+            Algoritmer.Pointer de2 = Algoritmer.BubbleSort;
+            Algoritmer.Pointer de3 = Algoritmer.SelectionSort;
 
 
 
 
-    /*        bool showMenu = true;
-            while (showMenu)
-            {
-                showMenu =MainMenu();
 
-            } */
+            /*        bool showMenu = true;
+                    while (showMenu)
+                    {
+                        showMenu =MainMenu();
+
+                    } */
 
         }
 

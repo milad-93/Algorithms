@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 
 namespace Algorithms
 {
@@ -51,6 +52,8 @@ namespace Algorithms
                     }
                 }
             }
+
+
         }
 
         public static void SelectionSort(int[] array)
@@ -163,10 +166,38 @@ namespace Algorithms
         }
         #endregion Algorithms
 
-        #region Delegates
-        public delegate int selecter(int[] array);
-        public delegate void pointer(int[] array);
-        public delegate void multiPointer(int[] array, int left, int right);
+        #region Delegates      
+        public delegate void Pointer(int[] array);
+        public delegate void Multi(int[] array, int left, int right);
+
+        //bubbleSort, insertionSort, selectionSort
+        public void DisplayRuningTime(Pointer pointer, int[] array)
+        {
+            Stopwatch sWatch = new Stopwatch();
+            sWatch.Start();
+            pointer(array);
+            sWatch.Stop();
+            TimeSpan tS = sWatch.Elapsed;
+
+            Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
+            Console.WriteLine("Elapsed Time is {0:00}:{1:00}:{2:00}.{3}",
+                tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
+        }
+        #endregion Delegates
+
+        //quick, merge sort
+        public void DisplayRuningTime(Multi multi, int[] array)
+        {
+            Stopwatch sWatch = new Stopwatch();
+            sWatch.Start();
+            multi(array,0, array.Length -1);
+            sWatch.Stop();
+            TimeSpan tS = sWatch.Elapsed;
+
+            Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
+            Console.WriteLine("Elapsed Time is {0:00}:{1:00}:{2:00}.{3}",
+                tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
+        }
 
 
         //Example
@@ -175,7 +206,7 @@ namespace Algorithms
         // https://www.youtube.com/watch?v=jQgwEsJISy0&t=1194s
 
 
-        #endregion Delegates
+
 
 
 
