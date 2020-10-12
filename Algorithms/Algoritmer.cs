@@ -171,7 +171,7 @@ namespace Algorithms
         public delegate void Multi(int[] array, int left, int right);
 
         //bubbleSort, insertionSort, selectionSort
-        public void DisplayRuningTime(Pointer pointer, int[] array)
+        public static void DisplayRuningTime(Pointer pointer, int[] array)
         {
             Stopwatch sWatch = new Stopwatch();
             sWatch.Start();
@@ -179,14 +179,14 @@ namespace Algorithms
             sWatch.Stop();
             TimeSpan tS = sWatch.Elapsed;
 
-            Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
-            Console.WriteLine("Elapsed Time is {0:00}:{1:00}:{2:00}.{3}",
+           // Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
+            Console.WriteLine("Time is:  [{0:00}:{1:00}:{2:00}.{3}]",
                 tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
         }
         #endregion Delegates
 
         //quick, merge sort
-        public void DisplayRuningTime(Multi multi, int[] array)
+        public static void DisplayRuningTime(Multi multi, int[] array)
         {
             Stopwatch sWatch = new Stopwatch();
             sWatch.Start();
@@ -195,7 +195,7 @@ namespace Algorithms
             TimeSpan tS = sWatch.Elapsed;
 
             Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
-            Console.WriteLine("Elapsed Time is {0:00}:{1:00}:{2:00}.{3}",
+            Console.WriteLine("Tid {0:00}:{1:00}:{2:00}.{3}",
                 tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
 
         }

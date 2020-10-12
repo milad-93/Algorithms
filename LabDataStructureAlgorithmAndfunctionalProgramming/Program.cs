@@ -17,15 +17,26 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             int arraySize;
             int[] array;
             
-            Console.WriteLine("Mata in en array Storlek");
-            arraySize = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Mata in en array Storlek");        
+            arraySize = Convert.ToInt32(Console.ReadLine());                       
             array  = Algoritmer.Prepare(arraySize);
 
-
-
+            // insertion sort
+            Console.WriteLine("InsertionSort");
             Algoritmer.Pointer del = Algoritmer.InsertionSort;
+            Algoritmer.DisplayRuningTime(del, array);
+
+            //bubble sort
+            Console.WriteLine("bubbleSort");
             Algoritmer.Pointer de2 = Algoritmer.BubbleSort;
+            Algoritmer.DisplayRuningTime(de2, array);
+
+            //selectionSort
+            Console.WriteLine("SelectionSort");
             Algoritmer.Pointer de3 = Algoritmer.SelectionSort;
+            Algoritmer.DisplayRuningTime(de3, array);
+
+
 
 
 
