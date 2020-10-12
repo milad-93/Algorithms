@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 
@@ -106,7 +107,7 @@ namespace Algorithms
 
         public static void Merge(int[] array, int left, int mid, int right)  //a recursive function to merge numbers[left,mid] and numbers[mid+1,right] into numbers[left,right]
         {
-            int[] temp = new int[25];    // temp is a temporary array to store result
+            int[] temp = new int[1000000];    // temp is a temporary array to store result
             int i, left_end, num_elements, tmp_pos;
             left_end = (mid - 1);
             tmp_pos = left;
@@ -167,11 +168,11 @@ namespace Algorithms
         #endregion Algorithms
 
         #region Delegates      
-        public delegate void Pointer(int[] array);
-        public delegate void Multi(int[] array, int left, int right);
+        public delegate void SingleValuepointer(int[] array);
+        public delegate void MultiValuePointer(int[] array, int left, int right);
 
         //bubbleSort, insertionSort, selectionSort
-        public static void DisplayRuningTime(Pointer pointer, int[] array)
+        public static void DisplayRuningTime(SingleValuepointer pointer, int[] array)
         {
             Stopwatch sWatch = new Stopwatch();
             sWatch.Start();
@@ -179,14 +180,14 @@ namespace Algorithms
             sWatch.Stop();
             TimeSpan tS = sWatch.Elapsed;
 
-           // Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
-            Console.WriteLine("Time is:  [{0:00}:{1:00}:{2:00}.{3}]",
+        //    Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
+            Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n",
                 tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
         }
-        #endregion Delegates
+        
 
         //quick, merge sort
-        public static void DisplayRuningTime(Multi multi, int[] array)
+        public static void DisplayRuningTime(MultiValuePointer multi, int[] array)
         {
             Stopwatch sWatch = new Stopwatch();
             sWatch.Start();
@@ -194,18 +195,14 @@ namespace Algorithms
             sWatch.Stop();
             TimeSpan tS = sWatch.Elapsed;
 
-            Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
-            Console.WriteLine("Tid {0:00}:{1:00}:{2:00}.{3}",
-                tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
+         //    Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));                       
+             Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n", 
+                 tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
+            
+
 
         }
-
-        //blablablablabalbal
-        //Example
-        //   public delegate void myDelegate(object source, EventArgs args);
-        // public event myDelegate delegated;
-        // https://www.youtube.com/watch?v=jQgwEsJISy0&t=1194s
-
+        #endregion Delegates
 
 
 

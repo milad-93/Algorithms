@@ -12,76 +12,154 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
 {
     class Program
     {
+        private static StringBuilder messages = new StringBuilder(); // can use anywhere
+        private static  int[] array; // can use anywhere
+
         static void Main(string[] args)
-        {            
+        {                         
+             DeclareArray();
+             DisplayMenu();
+          
+        }
+
+        private static void DeclareArray() //calling class algoritm creating int[] array  stored static in class reachable.
+        {       
             int arraySize;
-            int[] array;
+
+            try
+            {
+                Console.Write("Input Size of an array: ");
+                arraySize = Convert.ToInt32(Console.ReadLine());
+                array = Algoritmer.Prepare(arraySize);
+                Console.Clear();
+                Console.WriteLine("ArraySize = [{0}] \n", arraySize);
+            }
+            catch
+            {              
+                Console.WriteLine("Input must be an integer\n");
+                DeclareArray();
+            }
             
-            Console.WriteLine("Mata in en array Storlek");        
-            arraySize = Convert.ToInt32(Console.ReadLine());                       
-            array  = Algoritmer.Prepare(arraySize);
-
-            // insertion sort
-            Console.WriteLine("InsertionSort");
-            Algoritmer.Pointer del = Algoritmer.InsertionSort;
-            Algoritmer.DisplayRuningTime(del, array);
-
-            //bubble sort
-            Console.WriteLine("bubbleSort");
-            Algoritmer.Pointer de2 = Algoritmer.BubbleSort;
-            Algoritmer.DisplayRuningTime(de2, array);
-
-            //selectionSort
-            Console.WriteLine("SelectionSort");
-            Algoritmer.Pointer de3 = Algoritmer.SelectionSort;
-            Algoritmer.DisplayRuningTime(de3, array);
-
-
-
-
-
-
-
-            /*        bool showMenu = true;
-                    while (showMenu)
-                    {
-                        showMenu =MainMenu();
-
-                    } */
-
+          
         }
 
 
-        #region menu
-
-     /*   public static bool MainMenu()
+        #region using delegate Functions from Algoritmer class
+        private static void UseInsertionSort() // delegate invoke with runningtime
         {
-            // Console.Clear();
-            Console.WriteLine("Choose an option:");
-            Console.WriteLine("1) Swap");
-            Console.WriteLine("2) Randomize");
-            Console.WriteLine("3) Prepare");
-            Console.WriteLine("4) Exit");
-            Console.Write("\r\nSelect an option: ");
+            messages.AppendLine("---[InsertionSort]---");
+            Console.WriteLine(messages);
+            Algoritmer.SingleValuepointer delegate1 = Algoritmer.InsertionSort;
+            Algoritmer.DisplayRuningTime(delegate1, array);
+            messages.Clear();
+        }
 
+        private static void UseBubbleSort() // delegate invoke with runningtime
+        {
+            messages.AppendLine("---[BubbleSort]---");
+            Console.WriteLine(messages);
+            Algoritmer.SingleValuepointer delegate2 = Algoritmer.BubbleSort;
+            Algoritmer.DisplayRuningTime(delegate2, array);
+            messages.Clear();
+        }
+
+        private static void UseSelectionSort() // delegate invoke with runningtime
+        {
+            messages.AppendLine("---[SelectionSort]---");
+            Console.WriteLine(messages);
+            Algoritmer.SingleValuepointer delegate3 = Algoritmer.SelectionSort;
+            Algoritmer.DisplayRuningTime(delegate3, array);
+            messages.Clear();
+
+        }
+        private static void UseMergeSort() // delegate invoke with runningtime
+        {
+             messages.AppendLine("---[MergeSort]---");
+             Console.WriteLine(messages);
+             Algoritmer.MultiValuePointer delegate4 = Algoritmer.Sort;
+             Algoritmer.DisplayRuningTime(delegate4, array);
+             messages.Clear();
+
+        }
+        private static void UseQuickSort() // delegate invoke with runningtime
+        {
+            messages.AppendLine("---[QuickSort]---");
+            Console.WriteLine(messages);
+            Algoritmer.MultiValuePointer delegate5 = Algoritmer.QuickSort;
+            Algoritmer.DisplayRuningTime(delegate5, array);
+            messages.Clear();
+
+        }
+        #endregion
+
+        #region Menu
+        private static void DisplayMenu()
+        {
+            bool showMenu = true;
+            while (showMenu)
+            {
+                showMenu = MainMenu();
+
+            }
+            Console.Clear();
+        }
+        private static bool MainMenu() //Menu
+           {
+                  
+            Console.WriteLine("How do you want to sort the Array?");
+            Console.WriteLine("1) InsertionSort");
+            Console.WriteLine("2) BubbleSort");
+            Console.WriteLine("3) SelectionSort");
+            Console.WriteLine("4) MergeSort");
+            Console.WriteLine("5) QuickSort");
+            Console.WriteLine("6) Declare another arraySize?");
+            Console.WriteLine("7) Exit");
+            Console.Write("\r\nSelect an option: ");
+            
 
             switch (Console.ReadLine())
-            {
+               {
+                  
                 case "1":
-                   Algoritmer.Swap();
+                   // INSERTIONSORT
+                    UseInsertionSort();
                     return true;
+                   
                 case "2":
-                   // Randomize();
+                    //BUBBLESORT
+                    UseBubbleSort();                 
                     return true;
+                   
                 case "3":
-             //       Prepare();
+                    //SELECTIONSORT
+                    UseSelectionSort();
+
                     return true;
+                
                 case "4":
-                    return false;
-                default:
+                    //MergeSort
+                    UseMergeSort();
                     return true;
-            }
-        } */
+
+                case "5":
+                    //quickSort
+                    UseQuickSort();
+                    return true;
+                
+                case "6":
+                    DeclareArray(); // declaring new array then calling menu again                                 
+                    DisplayMenu();
+                    return true;
+                case "7":
+                    
+                    return false;
+
+                default:
+                       return true;
+               }
+
+            
+           } 
 
         #endregion Menu
 
