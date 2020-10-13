@@ -17,15 +17,15 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
 
         static void Main(string[] args)
         {                         
-             DeclareArray();
+             DeclareArray();            
              DisplayMenu();
+          
           
         }
 
         private static void DeclareArray() //calling class algoritm creating int[] array  stored static in class reachable.
         {       
             int arraySize;
-
             try
             {
                 Console.Write("Input Size of an array: ");
@@ -88,6 +88,16 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             Algoritmer.MultiValuePointer delegate5 = Algoritmer.QuickSort;
             Algoritmer.DisplayRuningTime(delegate5, array);
             messages.Clear();
+        }
+
+        public static void UseLambdaSort() //lambda sort in place // MÅSTE FIXAS
+        {
+            messages.AppendLine("---[Lamda Sort]---");
+            Console.WriteLine(messages);
+            Algoritmer.SingleValuepointer delegate6 = Algoritmer.LambdaSort;
+            Algoritmer.DisplayRuningTime(delegate6,array);
+            messages.Clear();
+
 
         }
         #endregion
@@ -112,8 +122,9 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             Console.WriteLine("3) SelectionSort");
             Console.WriteLine("4) MergeSort");
             Console.WriteLine("5) QuickSort");
-            Console.WriteLine("6) Declare another arraySize?");
-            Console.WriteLine("7) Exit");
+            Console.WriteLine("6) LambdaSort");
+            Console.WriteLine("7) Declare another arraySize?");          
+            Console.WriteLine("8) Exit");
             Console.Write("\r\nSelect an option: ");
             
 
@@ -147,12 +158,16 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
                     return true;
                 
                 case "6":
+                    //lambda sort
+                    UseLambdaSort(); 
+                    return true;
+                case "7":
                     DeclareArray(); // declaring new array then calling menu again                                 
                     DisplayMenu();
                     return true;
-                case "7":
-                    
-                    return false;
+                case "8":
+                   
+                    return false; //Exit
 
                 default:
                        return true;

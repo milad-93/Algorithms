@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Algorithms
 {
@@ -165,6 +166,12 @@ namespace Algorithms
 
             return end;
         }
+        public static void LambdaSort(int[] array) // MÅSTE FIXAS
+        {
+          var sortedArray =  array.OrderByDescending( x => x);
+                   
+        }        
+
         #endregion Algorithms
 
         #region Delegates      
@@ -174,18 +181,17 @@ namespace Algorithms
         //bubbleSort, insertionSort, selectionSort
         public static void DisplayRuningTime(SingleValuepointer pointer, int[] array)
         {
-            Stopwatch sWatch = new Stopwatch();
+            Stopwatch sWatch = new Stopwatch();       
             sWatch.Start();
             pointer(array);
             sWatch.Stop();
             TimeSpan tS = sWatch.Elapsed;
 
-        //    Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
-            Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n",
+              Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
+              Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n",
                 tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
         }
         
-
         //quick, merge sort
         public static void DisplayRuningTime(MultiValuePointer multi, int[] array)
         {
@@ -195,7 +201,7 @@ namespace Algorithms
             sWatch.Stop();
             TimeSpan tS = sWatch.Elapsed;
 
-         //    Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));                       
+         //  Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));                       
              Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n", 
                  tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
             
