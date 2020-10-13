@@ -94,40 +94,52 @@ namespace Algorithms
         }
 
         #region MergeSort
-        public static void Sort(int[] array, int right, int left)
+        public static void MergeSort(int[] array, int left, int right)
         {
             int mid;
             if (right > left)     //low >= high is the base case, i.e. there is 0 or 1 item   
             {
                 mid = (right + left) / 2;
-                Sort(array, left, mid);          // divide numbers into two halves   and 
-                Sort(array, (mid + 1), right);   //recursively sort them   
+                MergeSort(array, left, mid);          // divide numbers into two halves   and 
+                MergeSort(array, (mid + 1), right);   //recursively sort them   
                 Merge(array, left, (mid + 1), right);    // conquer ,merge two sorts halves
             }
+            
         }
 
-        public static void Merge(int[] array, int left, int mid, int right)  //a recursive function to merge numbers[left,mid] and numbers[mid+1,right] into numbers[left,right]
-        {
-            int[] temp = new int[1000000];    // temp is a temporary array to store result
+        private static void Merge(int[] array, int left, int mid, int right)  //a recursive function to merge numbers[left,mid] and numbers[mid+1,right] into numbers[left,right]
+        {   
+            int[] temp = new int[array.Length];
             int i, left_end, num_elements, tmp_pos;
-            left_end = (mid - 1);
+            left_end = mid - 1;
             tmp_pos = left;
             num_elements = (right - left + 1);
             while ((left <= left_end) && (mid <= right)) //merging when tow halves have unsorted items
             {
                 if (array[left] <= array[mid])
+                {
                     temp[tmp_pos++] = array[left++];
+                }
                 else
+                {
                     temp[tmp_pos++] = array[mid++];
+                }
             }
-            while (left <= left_end) temp[tmp_pos++] = array[left++]; //remaining items are copied into temp
-            while (mid <= right) temp[tmp_pos++] = array[mid++];
+            while (left <= left_end)
+            {
+                temp[tmp_pos++] = array[left++]; //remaining items are copied into temp
+            }
+            while (mid <= right)
+            {
+                temp[tmp_pos++] = array[mid++];
+            }
             for (i = 0; i < num_elements; i++)
             {
-                array[right] = temp[right]; right--; 
-
+                array[right] = temp[right];
+                right--;
+                //Merged result are copied back //into array[]
             }
-            //Merged result are copied back //into array[]
+
         }
 
         #endregion MergeSort
@@ -201,7 +213,7 @@ namespace Algorithms
             sWatch.Stop();
             TimeSpan tS = sWatch.Elapsed;
 
-         //  Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));                       
+           Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));                       
              Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n", 
                  tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
             
