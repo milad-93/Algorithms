@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Algorithms
 {
@@ -54,7 +55,6 @@ namespace Algorithms
                     }
                 }
             }
-
 
         }
 
@@ -178,11 +178,15 @@ namespace Algorithms
 
             return end;
         }
-        public static void LambdaSort(int[] array) // MÅSTE FIXAS
+        public static void LambdaSort(int[] array) 
         {
-          var sortedArray =  array.OrderByDescending( x => x);
-                   
-        }        
+            var result = array.OrderBy(x => x);
+            Console.WriteLine(string.Format("Sorted Array: [{0}]. \n", string.Join(", ", result)));
+
+            /*   Action desgArray = () => Console.WriteLine(array.OrderBy(x => x).ToString());
+            Action ascArray = () => Console.WriteLine(array.OrderBy(x => -x).ToString());
+            Parallel.Invoke(desgArray, ascArray); */
+        }
 
         #endregion Algorithms
 
@@ -199,8 +203,8 @@ namespace Algorithms
             sWatch.Stop();
             TimeSpan tS = sWatch.Elapsed;
 
-              Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));
-              Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n",
+            Console.WriteLine(string.Format("Sorted in place Array: [{0}].", string.Join(", ", array)));
+            Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n",
                 tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
         }
         
@@ -212,8 +216,8 @@ namespace Algorithms
             multi(array,0, array.Length -1);
             sWatch.Stop();
             TimeSpan tS = sWatch.Elapsed;
-
-           Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));                       
+           
+             Console.WriteLine(string.Format("Sorted Array: [{0}].", string.Join(", ", array)));                       
              Console.WriteLine("Searching time:  [{0:00}:{1:00}:{2:00}.{3}]\n", 
                  tS.Hours, tS.Minutes, tS.Seconds, tS.Milliseconds);
             

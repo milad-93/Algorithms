@@ -8,19 +8,17 @@ using System.Threading.Tasks;
 using Algorithms;
 
 
+
 namespace LabDataStructureAlgorithmAndfunctionalProgramming
 {
     class Program
-    {
-        private static StringBuilder messages = new StringBuilder(); // can use anywhere
-        private static int[] array; // can use anywhere
+    {   private static StringBuilder messages = new StringBuilder(); 
+        private static int[] array; 
 
         static void Main(string[] args)
         {
             DeclareArray();
             DisplayMenu();
-
-
         }
 
 
@@ -29,7 +27,7 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             int arraySize;
             try
             {
-                Console.Write("Input Size of an array: ");
+                Console.Write("[Input size of an array] : ");
                 arraySize = Convert.ToInt32(Console.ReadLine());
                 array = Algoritmer.Prepare(arraySize);
 
@@ -83,7 +81,6 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             catch (Exception x)
             {
                 Console.WriteLine(x.Message);
-
             }
         }
 
@@ -165,8 +162,8 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
         }
         private static bool MainMenu() //Menu
         {
-
-            Console.WriteLine("How do you want to sort the Array?");
+           
+            Console.WriteLine("---How do you want to sort the Array?---\n");
             Console.WriteLine("1) InsertionSort");
             Console.WriteLine("2) BubbleSort");
             Console.WriteLine("3) SelectionSort");
@@ -175,12 +172,13 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             Console.WriteLine("6) LambdaSort");
             Console.WriteLine("7) Declare another arraySize?");
             Console.WriteLine("8) Exit");
-            Console.Write("\r\nSelect an option: ");
+            Console.Write("\r\n[Select an option] : ");
+            
 
 
             switch (Console.ReadLine())
             {
-
+                
                 case "1":
                     // INSERTIONSORT
                     UseInsertionSort();
@@ -188,32 +186,35 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
 
                 case "2":
                     //BUBBLESORT
-                    UseBubbleSort();
+                    UseBubbleSort();                  
                     return true;
 
                 case "3":
                     //SELECTIONSORT
-                    UseSelectionSort();
-
+                    UseSelectionSort();               
                     return true;
 
                 case "4":
                     //MergeSort
                     UseMergeSort();
+                    
                     return true;
 
                 case "5":
                     //quickSort
                     UseQuickSort();
+                    
                     return true;
 
                 case "6":
                     //lambda sort
                     UseLambdaSort();
+                    
                     return true;
                 case "7":
                     DeclareArray(); // declaring new array then calling menu again                                 
                     DisplayMenu();
+                   
                     return true;
                 case "8":
 
@@ -223,7 +224,7 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
                     return true;
             }
 
-
+            
         }
 
         #endregion Menu
