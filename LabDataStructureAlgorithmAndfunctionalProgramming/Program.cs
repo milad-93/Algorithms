@@ -21,23 +21,22 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             DisplayMenu();
         }
 
-
         private static void DeclareArray() //calling class algoritm creating int[] array  stored static in class reachable.
         {
-            int arraySize;
+            int arraySizeInput;
             try
             {
                 Console.Write("[Input size of an array] : ");
-                arraySize = Convert.ToInt32(Console.ReadLine());
-                array = Algoritmer.Prepare(arraySize);
+                arraySizeInput = Convert.ToInt32(Console.ReadLine());
+                array = Algoritmer.Prepare(arraySizeInput);
 
-                if (arraySize <= 0)
+                if (arraySizeInput <= 0)
                 {
                     Console.WriteLine("Input cannot be 0");
                     DeclareArray();
                 }
                 Console.Clear();
-                Console.WriteLine("Current arraysize is ---[{0}]--- \n ", arraySize);
+                Console.WriteLine("Current arraysize is ---[{0}]--- \n ", arraySizeInput);
             }
             catch (Exception x)
             {
@@ -45,6 +44,7 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
                 DeclareArray();
 
             }
+
 
         }
 
@@ -142,7 +142,6 @@ namespace LabDataStructureAlgorithmAndfunctionalProgramming
             }
             catch (Exception x)
             {
-
                 Console.WriteLine(x.Message);
             }
 

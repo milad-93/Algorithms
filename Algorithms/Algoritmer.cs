@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace Algorithms
 {
     public class Algoritmer
@@ -76,19 +77,22 @@ namespace Algorithms
         }
 
         public static void InsertionSort(int[] array) // takes an array as input
-        {
-            for (int i = 0; i < array.Length - 1; i++)
+        {  // Move elements of arr[0..i-1], 
+           // that are greater than key, 
+           // to one position ahead of 
+           // their current position
+
+            int n = array.Length;
+            for (int i = 1; i < n; ++i)
             {
-                int j;
-                var insertionValue = array[i];
-                for (j = i; j > 0; j--)
+                int key = array[i];
+                int j = i - 1;              
+                while (j >= 0 && array[j] > key)
                 {
-                    if (array[j - 1] > insertionValue)
-                    {
-                        array[j] = array[j - 1];
-                    }
+                    array[j + 1] = array[j];
+                    j = j - 1;
                 }
-                array[j] = insertionValue;
+                array[j + 1] = key;
             }
 
         }
@@ -144,7 +148,6 @@ namespace Algorithms
 
         #endregion MergeSort
 
-
         public static void QuickSort(int[] array, int left, int right) // uses the function Partition
         {
             if (left > right || left < 0 || right < 0) return;
@@ -195,7 +198,7 @@ namespace Algorithms
         public delegate void MultiValuePointer(int[] array, int left, int right);
 
         //bubbleSort, insertionSort, selectionSort
-        public static void DisplayRuningTime(SingleValuepointer pointer, int[] array)
+        public  static void DisplayRuningTime(SingleValuepointer pointer, int[] array)
         {
             Stopwatch sWatch = new Stopwatch();       
             sWatch.Start();
